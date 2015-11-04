@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	<title>Notes Webpage</title>
+</head>
+<body>
+	<div class="title">
+		<h1>...:::Braden's Notes:::...</h1>
+	</div>
+	<div class="notes">
+		{% set count=0 %}
+		{% for note in notes%}
+			{% set count=count+1 %}
+			{% set stage='Stage '+count|string %}		
+			<h2>{{stage}}</h2>
+			{{note}}
+		{% endfor %}
+	</div>
+	<br>
+	<div class ="comments">
+		<h2>Comments</h2>
+		<form action="/comments" method="post" align="center">
+    		<div>Username: <input type="text" name="username"></div>
+    		<br>
+			Comment:
+			<div><textarea name="text" rows="3" cols="60"></textarea></div>
+    		<div><input type="submit" value="Submit"></div>  			
+  		</form>
+  		<br>
+  		{% for comment in comments%}
+  			<br>
+  			{% if comment.text != '' %}
+				{% if comment.username == '' %}
+  					<b>Anonymous</b> on {{comment.date}}
+  				{% else %}
+  					<b>{{comment.username}}</b> on {{comment.date}}
+  				{% endif %}
+  				<br><b>Said: </b> {{comment.text}}
+  			{% endif %}
+  			<br><br>
+  		{% endfor %}
+	</div>
+</body>
+
+</html>	

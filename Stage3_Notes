@@ -1,0 +1,27 @@
+webbrowser.open("url") will open a url in your web browser
+import turtle
+window=turtle.Screen()
+window.bgcolor("red")
+window.exitonclick()
+Above code creates a red screen with a turtle on it.
+turtle is a class and if
+brad=turtle.Turtle()
+angie=turtle.Turtle()
+brad and angie and instances of the turtle class
+class is like a blueprint of a building, contains height, size, etc. ie information 
+instance or object is the building itself which can do things specified in the class.
+By calling the turtle class you are calling the init() function
+from allows us to import a class from a module among other things
+
+By calling a class say: client =rest.TwilioRestClient() we are calling TwilioRestClient()'s' __init__() function, init is a constructor because it constructs space in memory for...
+The built in function <variable>=open(file_location) makes an object of file and we can do things with it like <variable>.read()
+connection=urllib.urlopen("url") opens a connection
+
+self is the object/ instance being created
+In our program self points to the movie toy story
+Instance variables are variables that are always prefixed with the word self. They are usually found in the __init__ constructor. A function defined inside a class and associated with and instance is called an instance method.
+Class variables should be in all caps.
+__name__ __mdule__ and __doc are predefined variables
+Inheritance is when you tell a class panda(bear) panda will inherit instance variables and functions from class bear
+Method overriding can be done by using the same name of a method that would be inherited by the parent class in the child class
+Servers are computers which we connect to while browsing the web that host websites.

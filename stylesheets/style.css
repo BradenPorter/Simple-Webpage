@@ -1,0 +1,23 @@
+h1, 
+h2, 
+h3 {
+	text-align: center;
+}
+
+div {
+	background-color: #48169A; 
+	color: #ffffff;
+	padding: 10px;
+}
+
+html {
+	background-color: #000000;
+}
+
+.title {
+	color: #ffff00;
+}
+
+.notes {
+	font-family: Helvetica;
+}

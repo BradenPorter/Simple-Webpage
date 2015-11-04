@@ -1,0 +1,104 @@
+Add <script></script> to add javascrpt to you html file or write it into a .js file.
+To declare a variable in js you use var. ie var age = 32;
+var s = "audacity";
+s = s[1].toUpperCase() + s.slice(2);
+s is "Udacity"
+slice(0) grabs the whole string, slice(0,3) grabs the first 3 characters
+Values that would evaluate to true:true, non zero numbers, strings, objects, arrays, functions
+Values that would evaluate to false:false,0,"",undefined(variable doesnt exist and interpreter doesnt know what you are refering to),null(variable has no value),NaN(not a number). pop() returns the last element of the array and removes it from the array. push() adds an element to the end of the array.
+There are no classes in JS.
+Objects are like this, var myObj = {key:value, key:value};
+you can reference values with myObj.key
+myObj.property=someValue is dot notation, myObj["property"]=someValue is bracket notation 
+JSON-JavaScript Object Notation is a format for storing/transfering hierarchal data. Many languages have libraries that write JSON for you because it's easy to make a mistake when coding.
+API-Application Program Interface-programmers have existing programs that you can reference/ interface with to make your own program ie. geolocating an ip and adding comment geolocation to your blog.
+In python dir(<object>) from urllib2 can examine objects but first
+ p=urllib2.urlopen("<url>") c=p.read() c.headers.items() will get headers where you can find server information.
+ XML is a language like html but it's for describing data, it can express html but can't replace it. from xml.dom import minidom - minidom will parse xml with minidom.parseString("<xml>") we can then inspect this with dir. 
+ .getElementsByTagName("<xmltag>")[index].childNodes[0].nodeValue
+
+We can parse json with d=json.loads(<variable>)
+and can access things like we normally would in python with d[index] or d[key]
+j=json.loads(reddit_front) 
+return sum(c['data']['ups'] for c in j['data']['children']) will add all of the ups in data's children key to get to this conclusion we used the python interpreter(ide) and navigatied the data structure with j.keys() and j['key'].keys() and then appending the ['key'] we want, if keys() turns up an error it's probably a list so we'd look at the keys of the first element in the list by appending [0].keys(), continuing this pattern until we are at our desired level in the data structure, then we search for us by appending ['ups'], the ide will return the number of ups
+
+When writing programs that interact with websites use a good user-agent so that the website can get information from you, rate-limit yourself with time.sleep(1) so that you aren't hitting a website with too many requests.
+
+Examples of formats for communicating data accross the internet are Soap(microsoft), protocol buffers(google), thrift(facebook), XML, and JSON.
+A tuple is like a list except it's value's are immutable and it uses parenthesis instead of brackets. 
+
+A recursive definition has a base case(starting point) that isn't defined in terms of itself and the smallest input which we already know.
+The recursive case is defined in smaller terms of itself. For a function to be recursive it has to call itself, passing itself a variable, until it reaches the base case. The recursive function usually needs to be in the return statement.
+
+Parallel computing is a larga problem is computed by multiple computers performing a calculation at the same time . 
+
+When solving a big problem it's best to identify all parts of the problem and briefly describe how each part will be solved in programming-this is called sudocode
+
+Using a lot of nested loops can be slow, maybe there is an easier way?
+| can be used to concatenate two sets. The continue statement can be used to continue where the last loop left off. sum() can be used to sum things up. You could even put a for loop in there so sum(for POINTS[L] for L in word)
+sorted() is a powerful function that sort lists based on parameters like key.
+we can also add commas into for loops ie.: for key,value in dictionary
+
+enumerate() returns an enumerate object, adding a counter to an iterable
+ie. (from http://stackoverflow.com/questions/22171558/what-does-enumerate-mean)
+>>> elements = ('foo', 'bar', 'baz')
+>>> for count, elem in enumerate(elements):
+...     print count, elem
+... 
+0 foo
+1 bar
+2 baz
+
+if you were to give a second parameter next to elements that is an integer it would start counting from that instead
+
+isinstance() returns true if its first parameter(an object) is an instance of the second(like a string or dictionary) 
+
+
+
+Additional Learning:
+
+Advanced Python:
+https://www.codecademy.com/courses/python-beginner-en-KAgt5/0/1?
+Summary:
+<dictionary>.items() returns a list of tuples with key and value pairs. A tuple is enclosed in parenthesis and can contain any type of data, but cannot be changed.
+<dictionary>.keys() returns a list of the dictionary's keys
+<dictionary>.values() returns a list of its values
+list =range(51) would create a list of numbers from 0 to 50, and evens_to_50 = [i for i in range(51) if i % 2 == 0] would make a list of even numbers between 0 and 50. In the brackets we've used what's called a list comprehension.
+We already know about list slicing but we can put a stride in between brackets: print list[start:end:stride] so we know how many elements to skip. A stride of 3 would skip 2 elements selecting the outer 2. We can reverse a list with a stride of -1. lambda is for making a function on the fly lambda x: x % 2 == 0 is the same as 
+def by_two(x): 
+	return x % 2 == 0
+An iterable is something that can be iterated through such as a list, string, or tuple. 
+filter(function, iterable) function checks which elements in iterable return true for its condition and makes a list of them.
+
+File encryptin with python:
+http://www.laurentluce.com/posts/python-and-cryptography-with-pycrypto/
+Summary:
+PyCrypto is a module that allows us to encrypt things like messages or programs so they cannot be identified.
+A hash function takes an input of some string(should be hard to guess) and returns a hash value. Examples of hash functions used to hash passwords which are kept on website databases include SHA256, SHA-1, and MD5. Typically passwords in SQL databases are hashed in case a hacker breaks in. This provides another level of security.
+An example of a SHA256 hash function:
+from Crypto.Hash import SHA256
+def hash_pass(password):
+	return SHA256.new(password).hexdigest()
+Hashes are for when you want the original input to remain unknown, but encryption is for when you don't. Say if you want an encrypted message to be read by a trusted party then that party would have to decrypt the message. Both the encrypter and decrypter need to have the same key(unless you are using a pulic-key algorithm). In python we encrypt and decrypt using DES(a block cipher) like so:
+>>> from Crypto.Cipher import DES
+>>> des = DES.new('01234567', DES.MODE_ECB)
+>>> text = 'abcdefgh'
+>>> cipher_text = des.encrypt(text)
+>>> cipher_text
+'\xec\xc2\x9e\xd9] a\xd0'
+>>> des.decrypt(cipher_text)
+'abcdefgh'
+Block ciphers encrypt blocks of 8 or 16 bytes whereas stream ciphers do it one byte at a time. The above process is looks similiar for a stream cipher. 
+With a public-key algorithm there are separate keys for decryption and encryption.
+To create a key pair we do:
+>>> from Crypto.PublicKey import RSA
+>>> from Crypto import Random
+>>> random_generator = Random.new().read
+>>> key = RSA.generate(1024, random_generator)
+#then to encrypt:
+>>> public_key = key.publickey()
+>>> enc_data = public_key.encrypt('abcdefgh', 32)
+#decrypt:
+>>> key.decrypt(enc_data)
+'abcdefgh'
+

@@ -1,0 +1,102 @@
+Servers are computers which we connect to while browsing the web. They host websites. We send requests to servers to communicate with them. ie visiting a webpage.
+Servers respond to http requests with either static(pre-written file image) or dynamic requests(made on the fly by web applications(programs that generate content that your browser requests)).
+There are two types of HTTP requests: GET, which retrieves data from the server, and POST which sends data to the server. Further down these are elaborated on.
+
+Network - group of entities that can communicated even tough not directly connected
+Latency - time it takes for a message to go from source to destination
+Bandwidth- amount of information that can be transmitted per unit of time, ie bits per second or megabits per second
+Bit-Smallest unit of information, 0 and 1 aka no and yes, a bit allows us to decide between 2 things
+Protocol- ie http(hyptertext transfer protocol/ the main protocol of the web), how the client is able to send a message to the server and vice versa
+client gets an object from web application and the web app sends back a response object
+
+The <head> of an html document contains references to the title and any scriptign languages you will be using such as CSS or Javascript. <body> contains all of the content
+A url such as http://www.google.com/, uses the http protocol, to connect to the www.google.com host, on the path of /. 
+A query value usually looks like ?p=1 and is appended to a url's path. 1 would be the value. The server will use these query parameter values to do something.
+A cache is something that stores data so you don't have to retrieve it later. This makes data requests faster.
+A fragment is appended to the url path with a #<fragment>
+The port is appended to the host with a :<portnumber> 
+
+http://www.example.com/foo - request line - GET /foo HTTP/1.1 -method(ie GET(from server) or POST(to server))/relative_path protocol/version(1.1 or 1.0) - fragments are for the browser only and aren't passed to the server
+GET---------------vs----------------POST
+GET-parameters in url			POST-inbody
+GET-fetch documents            POST-update data
+GET-max url length     		POST-no max length
+GET-ok to cache				POST-not ok to cache
+GET-shouldnt change server     POST-change server
+
+The user-agent is a header in the http request and gives the server browser type and version so that the server can better interact with clients
+HTTP Responses are sent to the client from server in this form: HTTP/1.1 200 OK -Status line-protocol/version status_code reason_phrase. Status codes: 200 OK, 302 Found, 404 Not Found, 500 Server Error 
+Responses also include Date, Server, Content-Type, Content-Length
+
+Forms are used by users to perform functions on your website like select from dropdown menus or enter text. Forms need to be secure so that hackers cannot exploit the function of sending data to your website. By adding <input> users can input to your forms. Input can have different types like password and checkbox. <action> can be used to have your form interact with an existing webpage.
+
+Entering dev_appserver.py <app_directory> will run your google app engine application on http://localhost:8080
+Update an app on Google Cloud Platform by adding your application id to the yaml.app file ie application:unique_app_id then entering 'appcfg.py update <app_directory> into terminal.
+Your app can be found at <unique_application_id>.appspot.com
+The .yaml file will handle requests from the browser and make sure that they are directed to the right place. The app referenced in the .yaml file must match the title of the python script.
+
+The modulus operator % gives you the remainder of a number/number by using number%number
+
+A dictionary is a set of <key:value> pairs. ie {'hydrogen':1,'helium':23} You can refer to a value with d[key] <--- this would give you the value associated with key in d. 
+elements['H']={'name': 'Hydrogen', 'number':1, 'weight':1.00794}
+print elements['H']['weight'] would print the weight and print elements['H'] would print the whole list.
+
+By using validation you be selective of the data that get's sent through the web app. This is done by verifying the user's input, rendering the form again on error, and then including the error message. Validation is important because data which is not validated, either through the above or through escaping, can mislead the server into running arbitrary code which a user submits. Attackers can make our server do things it was not intended for. Also validation is important because a user may submit data which does not comply with our server's needs. ie a blank form. This could display an undesired user input on our website so it's best we prompt the user to fix the error before our it ends up in our database. After validating we should display a message like an error message so the user knows that their first input was wrong and instead can input acceptable data.
+
+String substitution - by replacing the contents of a string with %s <b>%s</b> and adding %a to the end you can substitute a variable'a' in. "text %(name)s text" % {"name": value} can also work and is useful for replacing multiple names.
+
+An optional parameter is optional because if you don't include one then the function will take a default value instead.
+
+An input value can end up outside our input value because of input that turns the html code into a string such as 'foo">derp'. If a user enters some html this can be exploited so that our website can be changed. Say if we wanted to write about html tags on our website, escaping can and should be done with "->&quot; > ->&gt; < ->&lt; &->&amp; 
+
+You can redirect the browser to another url after a form submission so that reloading the page doesn't resubmit the form and so you have distinct pages for forms and success pages. To redirect do self.redirect("/newpath") then you map this to the correct handler in the app variable.
+
+<input type="hidden"> a hidden type value is not meant to be seen or changed by the user.
+
+A template library is a library to build complex strings, usually html.
+
+**params indicates a bunch of parameters. 
+
+Variable Substitution with {{variable}} will print variable. Using jinja, you can put python code in your template with {% <code> %}. Adding autoescape = True to your jinja environment variable jinja will automatically escape all of you variable substitutions. You always want auto escape variables so that your website is secure. Using a safe filter allows you to decide which input is safe to allow html and what html to allow, say if you were to allow comments with formatting. 
+
+Minimize code in your templates. Minimize the html in your code. This will make your code less complex and less buggy.
+
+Template inheritance is a way to make a template share html with another template by adding: {% extends "<sharedtemplate>.html" %} to the top of our html document and {% block content %} and {% endblock %} around your content in both documents. Sharing a template allows us to avoid repeating html because a shared template transfers its html onto another template.
+
+With templates you can separate different types of code, make code more readable, make more secure websites, and make html that is easier to modify.
+
+A database is a program that stores and retrieves large amounts of structured data.
+It is divided up into columns based on type. An instance of all types is called a row.
+This makes up a table.
+The downsides of querying data by hand with python:
+-error-prone
+-tedious
+-slow
+
+Types of databases:
+Relational (SQL) - Postgreswl, MySQL, SQLite, Oracle
+Google App Engine's Datastore
+Amazon Dynamo
+NoSQL
+(There is no best database)
+
+SQL:
+Structured Query Language
+Invented in 1970s
+ie. SELECT * FROM links WHERE id=5; would select all columns from links where id is 5
+You can import a SQL module to use SQL in python
+link=Link(*c.fetchone()) would convert the selected data in a link object.
+OR and AND can be used in SQL 
+ORDER BY votes will order votes in ascending order by default or  descending by appending DESC
+Using a join query (select link.* from link, user where link.user_id=user.id and user.name='panda') is good for checking two tables that are somehow related, perhaps containing the same user id.
+
+Sequantial Scans are slow if you have a lot of data so instead we should use indexes with hash tables to increase the speed of our queries. You can also use a tree which is automatically sorted, however lookups are slower because speed decreases as the tree grows.
+
+ACID:
+Atomicity-all parts of a transaction suceed or fail together
+Consistency-the database will always be consistent
+Isolation-no transaction can interfere with anothers
+Durability-once a trasaction is comitted, it won't be lost
+
+In the Google App Engine Datastore tables are entities, columns are not fixed, entities all have an ID, entities have parents and ancestors.
+/.* means that something will accept anything containing the previous character

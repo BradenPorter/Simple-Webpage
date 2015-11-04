@@ -1,0 +1,30 @@
+A computer program is a set of instructions that tell the computer what to do.
+A python interpreter reads your python code line in order line by line and runs it.
+Python has its own form of grammar which, if not used properly, will result in a syntax error.
+
+Variables have names that refer to a value assigned in your code. Strings are peices of text.
+The .find method can be used to search strings. 
+You can define your own functions using def. A function usually takes an input and outputs with a return. 
+
+If, else, and, and, or can be used to compare values. Functions can also return the boolean values True and False. While loop will continue executing a segment of code as long as the condition is true. Break will stop executing the current segment of code and move onto the next. 
+
+Debugging is when you try to find and fix bugs in your code. Ways to debug: read error messages, comment out and modify existing code, test/check example code, output intermediate results, save and compare old versios.
+
+Using lists you can store multiple elements in a single variable. Elements in a list can be different types of data ie. strings, integers, etc. Lists can be nested in lists.
+List mutation is when you change the value of an existing list.
+
+Aliasing is when you have 2 ways to refer to the same object.
+List operations such as <list>.append(<element>) allow us to add another element to the list.
+The + operator produces a new list concatenation. len() ouputs the length. Structured data is data that is organized into a construct such as a list.
+For loops allow us to execute code in iterations.
+<list>.index(<value>) returns the index of the value in the list.<value> in <list> will return true if the value is found in the list. <value> not in <list> will return true if the value isn't in the list.
+
+Steps in problem solving are: 1 Understand the problem 2 Think about the inputs and outputs 3 Work through some examples to understand the relationship between the two 4 Work out simple mechanical solution 5 Solve the problem incrementally by breaking it down so it's simpler to manage.
+It helps to solve the problem manually first and to then organize your process into an algorithm. Test your program with different test cases.
+You can make progress by writing smaller peices of code that you understand and then testing them. It's best to break the problem up into smaller parts therefore making it easier to manage. 
+
+With an assert <condition> you are testing a condition and triggering an error if it's false. The += operator allows you to set something equal to itself plus whatever is to the right of the equals sign. 'import random' will give us the functions form the random library such as random.randint(0,10) to generate a random number between 0 and 10.
+
+<string>.split(separator) will break a string into smaller separate strings. If separator is left blank it will automatically break the string into words.
+<string>.join(<sequence>) will join the strings in sequence with a string between each.
+user_input=raw_input(<prompt>) will set prompt the user to enter input and set it equal to the variable user_input in the program. 
